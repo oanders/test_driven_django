@@ -4,7 +4,10 @@ import unittest
 class NewVisitorTest(unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Firefox()
-        self.brower.implicitly_wait(3)
+        self.browser.implicitly_wait(3)
+
+    def tearDown(self):
+        self.browser.quit()
 
     def test_can_start_a_list_and_retrieve_it_later(self):
         # Edith has heard about a cool new online to-do app. She goes
@@ -35,7 +38,6 @@ class NewVisitorTest(unittest.TestCase):
         # She visits that URL - her to-do list is still there.
 
         # Satisfied, she goes back to sleep
-    def tearDown(self):
-        self.browser.quit()
+
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
